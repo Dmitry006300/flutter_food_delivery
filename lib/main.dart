@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery/auth/login_or_register.dart';
 import 'package:flutter_food_delivery/auth/login_page.dart';
 import 'package:flutter_food_delivery/auth/register_page.dart';
+import 'package:flutter_food_delivery/data/restaurant_data.dart';
 import 'package:flutter_food_delivery/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(), //Theme
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => ThemeProvider()), //Theme
+
+      ChangeNotifierProvider( create: (context) => Restaurant()), //Restaurant
+    ],
     child: const MainApp(),
     ),
   );
