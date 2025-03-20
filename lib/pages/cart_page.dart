@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery/components/cart_tile.dart';
 import 'package:flutter_food_delivery/data/restaurant_data.dart';
+import 'package:flutter_food_delivery/pages/payment_page.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -44,17 +45,43 @@ class CartPage extends StatelessWidget {
               ),
             ],
           ),
-          body: Column(children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: userCart.length,
-                itemBuilder: (context, index) {
-                  final cartItem = userCart[index];
-                  return CartTile(cartItem: cartItem);
-                },
+          body: Column(
+            children: [
+              //list of cart
+
+              Expanded(
+                child: Column(children: [
+                  userCart.isEmpty
+                      ? const Expanded(
+                          child: Center(
+                            child: Text("Cart is empty..."),
+                          ),
+                        )
+                      : Expanded(
+                          child: ListView.builder(
+                            itemCount: userCart.length,
+                            itemBuilder: (context, index) {
+                              final cartItem = userCart[index];
+                              return CartTile(cartItem: cartItem);
+                            },
+                          ),
+                        ),
+                ]),
               ),
-            ),
-          ]));
+              ElevatedButton(
+                  onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentPage(),
+                        ),
+                      ),
+                  child: Text('Go to payment')),
+
+              SizedBox(
+                height: 25,
+              )
+            ],
+          ));
     });
   }
 }
