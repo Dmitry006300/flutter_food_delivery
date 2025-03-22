@@ -38,12 +38,15 @@ class _PaymentPageState extends State<PaymentPage> {
               child: const Text('Cancel'),
             ),
             TextButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const DeliveryProgressPage(),
-                ),
-              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DeliveryProgressPage(),
+                  ),
+                );
+              },
               child: const Text('Yes'),
             ),
           ],
@@ -64,8 +67,10 @@ class _PaymentPageState extends State<PaymentPage> {
         children: [
 //Credit card ui
           CreditCardWidget(
+            width: 320.0,
+            height: 170.0,
             cardBgColor: Theme.of(context).colorScheme.primary,
-            isChipVisible: false,
+            isChipVisible: true,
             cardNumber: cardNumber,
             expiryDate: expiryDate,
             cardHolderName: cardHolderName,
@@ -91,13 +96,15 @@ class _PaymentPageState extends State<PaymentPage> {
 
           const Spacer(),
 
-          ElevatedButton(
-            onPressed: () {
-              onPressedPay();
-            },
-            child: const Text('Pay now'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                onPressedPay();
+              },
+              child: const Text('Pay now'),
+            ),
           ),
-          const SizedBox(height: 25),
         ],
       ),
     );

@@ -6,7 +6,7 @@ import 'package:flutter_food_delivery/components/user_current_location.dart';
 import 'package:flutter_food_delivery/components/user_description_box.dart';
 import 'package:flutter_food_delivery/components/widget_drawer.dart';
 import 'package:flutter_food_delivery/components/widget_tab_br.dart';
-import 'package:flutter_food_delivery/data/restaurant_data.dart';
+import 'package:flutter_food_delivery/database/restaurant_data.dart';
 import 'package:flutter_food_delivery/models/food_model.dart';
 import 'package:flutter_food_delivery/pages/food_page_details.dart';
 import 'package:provider/provider.dart';

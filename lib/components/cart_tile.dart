@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery/components/quantity_selector.dart';
-import 'package:flutter_food_delivery/data/restaurant_data.dart';
+import 'package:flutter_food_delivery/database/restaurant_data.dart';
 import 'package:flutter_food_delivery/models/cart_item.dart';
 import 'package:provider/provider.dart';
 
@@ -51,11 +51,10 @@ class CartTile extends StatelessWidget {
                             Text(
                               '\$' + cartItem.food.price.toString(),
                               style: TextStyle(color: Theme.of(context).colorScheme.primary,),
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        QuantitySelector(
+                            ),
+                            SizedBox(height: 10),
+
+         QuantitySelector(
                             food: cartItem.food,
                             onIncrement: () {
                               restaurant.addToCart(
@@ -65,6 +64,11 @@ class CartTile extends StatelessWidget {
                               restaurant.removeFromCart(cartItem);
                             },
                             quantity: cartItem.quantity),
+
+                          ],
+                        ),
+                       // Spacer(),
+               
                       ],
                     ),
                   ),
